@@ -31,6 +31,11 @@
         padding: 0rem 3rem;
     }
 
+    @include desktop
+    {
+        padding: 0rem 5rem;
+    }
+
     &__logo
     {
         cursor: pointer;
@@ -134,6 +139,12 @@
         {
             font-size: 3.75rem;
             line-height: 4.25rem;
+            padding: 1rem 3rem;
+        }
+
+        @include desktop
+        {
+            padding: 1rem 5rem;
         }
     }
 }
@@ -160,25 +171,31 @@
         {
             font-size: 2.25rem;
             line-height: 2.75rem;
+            padding: 2rem 3rem;
+        }
+
+        @include desktop
+        {
+            padding: 2rem 5rem;
         }
     }
 
     &__image
     {
         width: 85vw;
-        margin: auto;
-        margin-bottom: 2rem;
+        margin: 1rem;
 
         @include tablet
         {
             width: 65vw;
+            margin: 0 auto 2rem auto;
         }
     }
 
     &__caption
     {
         width: 65vw;
-        margin-left: 3rem; 
+        padding: 0rem 1rem;
         font-family: $Font600;
         font-size: 1.25rem;
 
@@ -190,8 +207,8 @@
     }
 
     &__text
-    {   margin-left: 3rem;
-        margin-top: 2rem;
+    {  
+        margin: 2rem 1rem;
         font-family: $Font600;
         font-size: 1.25rem;
 
@@ -208,14 +225,13 @@
     &__subtitle
     {
         width: 65vw;
-        margin-left: 3rem;
+        padding: 1rem 0rem 0rem 1rem;
         font-family: $Font600;
         font-size: 1.5rem;
-        margin-top: 4rem;
 
         @include tablet
         {
-            width: 65vw;
+            width: 70vw;
             margin: auto;
             font-family: $Font600;
             font-size: 1.75rem;
@@ -270,7 +286,7 @@
         font-family: $Font700;
         font-size: 1.5rem;
         line-height: 2rem;
-        text-indent: 5rem;
+        padding: 1rem;
 
         @include tablet
         {
@@ -278,8 +294,13 @@
             font-family: $Font700;
             font-size: 2.25rem;
             line-height: 3rem;
-            padding-top: 2rem;
-        }            
+            padding: 1rem 3rem;
+        }
+        
+        @include desktop
+        {
+            padding: 1rem 5rem;
+        }
     }
 
     &__grid
@@ -301,10 +322,10 @@
     {
         width: 80vw;
         padding: 1rem;
-        opacity: 0.8;
+        filter: grayscale(100%);
 
         &:hover{
-            opacity: 1;
+            filter: grayscale(0%);
         }
 
         @include tablet
@@ -320,11 +341,17 @@
 
     margin-top: 2rem;
     background-color: $BandSite-Black;
+    padding: 1rem;
 
     @include tablet
     {
-        margin-top: 2rem;
+        padding: 1rem 3rem;
         background-color: $BandSite-Black;
+    }
+
+    @include desktop
+    {
+        padding: 1rem 5rem;
     }
 
     &__top
@@ -357,16 +384,16 @@
     &-top__title
     {
         font-family: $Font700;
-        font-size: 3rem;
+        font-size: 1.5rem;
         color: white;
-        margin: 1rem 3rem 1rem 0rem;
+        padding-bottom: 1rem;
 
         @include tablet
         {
             font-family: $Font700;
             font-size: 2.25rem;
             color: white;
-            margin-right: 3rem;
+            padding: 0rem 7rem 1rem 0rem;
         }
     }
 
@@ -465,7 +492,6 @@
         font-family: $Font600;
         color: white;
         margin: 1rem  0;
-        text-indent: 1rem;
     }
 }
 
