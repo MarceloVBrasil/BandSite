@@ -17,7 +17,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
 }
 
 .header {
@@ -27,7 +26,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
   flex-wrap: wrap;
 }
 @media (min-width: 768px) {
@@ -80,7 +78,7 @@
   text-decoration: none;
   color: #E1E1E1;
   cursor: pointer;
-  padding: 1rem;
+  padding: 1rem 0rem;
   width: 100%;
   border-bottom: 5px solid transparent;
 }
@@ -103,7 +101,6 @@
 
 .hero {
   background-image: url("../assets/images/hero-bio.jpg");
-  width: 100vw;
   height: 90vh;
   background-size: cover;
   display: flex;
@@ -116,7 +113,7 @@
   color: #FFFFFF;
   font-size: 1.5rem;
   line-height: 2rem;
-  padding: 1rem;
+  padding: 0rem 1rem;
 }
 @media (min-width: 768px) {
   .hero__text {
@@ -298,7 +295,7 @@
 .footer {
   margin-top: 2rem;
   background-color: #323232;
-  padding: 1rem;
+  padding: 1rem 0rem;
 }
 @media (min-width: 768px) {
   .footer {
@@ -404,6 +401,7 @@
   align-items: flex-start;
   justify-content: center;
   row-gap: 2rem;
+  width: auto;
 }
 @media (min-width: 768px) {
   .footer-center__section {
@@ -418,12 +416,17 @@
   font-family: "Avenir Next Demi";
   color: white;
   margin-left: 1rem;
-  width: 20rem;
+  width: auto;
+}
+@media (min-width: 768px) {
+  .footer-center__text {
+    width: 20rem;
+  }
 }
 .footer-bottom__text {
   font-family: "Avenir Next Demi";
   color: white;
-  margin: 1rem 0;
+  margin: 3rem 0;
 }
 
 .email {
