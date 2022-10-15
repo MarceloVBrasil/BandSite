@@ -373,18 +373,6 @@
     display: block;
   }
 }
-.footer-top__icon--bottom-logo {
-  margin-top: 5rem;
-  margin-left: 1rem;
-  max-width: 12rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-@media (min-width: 768px) {
-  .footer-top__icon--bottom-logo {
-    display: none;
-  }
-}
 .footer__center {
   display: flex;
   flex-direction: column;
@@ -430,6 +418,18 @@
   margin: 3rem 0;
   padding-left: 1rem;
   font-size: 0.8rem;
+}
+.footer-bottom__icon {
+  margin-top: 5rem;
+  margin-left: 1rem;
+  max-width: 12rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+@media (min-width: 768px) {
+  .footer-bottom__icon {
+    display: none;
+  }
 }
 
 .email {
