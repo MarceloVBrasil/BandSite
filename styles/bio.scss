@@ -418,21 +418,6 @@
         }
     }
 
-     &-top__icon--bottom-logo
-    {
-        margin-top: 5rem;
-        margin-left: 1rem;
-        max-width: 12rem;
-        margin-bottom: 1rem;
-        display: block;
-
-        @include tablet
-        {
-            display: none;
-        }
-    }
-
-
     &__center
     {
         display: flex;
@@ -486,6 +471,20 @@
         margin: 3rem  0;
         padding-left: 1rem;
         font-size: 0.8rem;
+    }
+
+    &-bottom__icon
+    {
+        margin-top: 5rem;
+        margin-left: 1rem;
+        max-width: 12rem;
+        margin-bottom: 1rem;
+        display: block;
+
+        @include tablet
+        {
+            display: none;
+        }
     }
 }
 
