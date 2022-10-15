@@ -22,11 +22,6 @@
 .header {
   padding-top: 1rem;
   background-color: #323232;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 @media (min-width: 768px) {
   .header {
@@ -34,12 +29,12 @@
     justify-content: flex-start;
     -moz-column-gap: 1.5rem;
          column-gap: 1.5rem;
-    padding: 0rem 3rem;
+    padding: 0rem 5rem;
   }
 }
 @media (min-width: 1280px) {
   .header {
-    padding: 0rem 5rem;
+    padding: 0rem 10rem;
   }
 }
 .header__logo {
@@ -54,21 +49,30 @@
 }
 .header__nav {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
 }
 @media (min-width: 768px) {
   .header__nav {
+    flex-direction: row;
+    -moz-column-gap: 7rem;
+         column-gap: 7rem;
     width: auto;
   }
 }
 .header-nav__ul {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   list-style-type: none;
   width: 100%;
+}
+@media (min-width: 768px) {
+  .header-nav__ul {
+    width: auto;
+  }
 }
 .header-nav__ul-link {
   font-family: "Avenir Next Bold";
@@ -109,7 +113,7 @@
   padding: 0;
 }
 .hero__text {
-  font-family: "Avenir Next Bold";
+  font-family: "Avenir Next Demi";
   color: #FFFFFF;
   font-size: 1.5rem;
   line-height: 2rem;
@@ -119,12 +123,13 @@
   .hero__text {
     font-size: 3.75rem;
     line-height: 4.25rem;
-    padding: 1rem 3rem;
+    padding: 0rem 5rem;
   }
 }
 @media (min-width: 1280px) {
   .hero__text {
-    padding: 1rem 5rem;
+    padding: 0rem 10rem;
+    margin-top: 15rem;
   }
 }
 
@@ -148,12 +153,12 @@
   .about__title {
     font-size: 2.25rem;
     line-height: 2.75rem;
-    padding: 2rem 3rem;
+    padding: 2rem 5rem;
   }
 }
 @media (min-width: 1280px) {
   .about__title {
-    padding: 2rem 5rem;
+    padding: 2rem 10rem;
   }
 }
 .about__image {
@@ -256,12 +261,12 @@
     font-family: "Avenir Next Bold";
     font-size: 2.25rem;
     line-height: 3rem;
-    padding: 1rem 3rem;
+    padding: 1rem 5rem;
   }
 }
 @media (min-width: 1280px) {
   .photo-gallery__title {
-    padding: 1rem 5rem;
+    padding: 1rem 10rem;
   }
 }
 .photo-gallery__grid {
@@ -299,13 +304,13 @@
 }
 @media (min-width: 768px) {
   .footer {
-    padding: 1rem 3rem;
+    padding: 1rem 5rem;
     background-color: #323232;
   }
 }
 @media (min-width: 1280px) {
   .footer {
-    padding: 1rem 5rem;
+    padding: 1rem 10rem;
   }
 }
 .footer__top {
