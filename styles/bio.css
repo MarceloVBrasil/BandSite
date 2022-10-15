@@ -75,7 +75,7 @@
   }
 }
 .header-nav__ul-link {
-  font-family: "Avenir Next Bold";
+  font-family: "Avenir Next Demi";
   text-align: center;
   font-size: 1.5rem;
   line-height: 2rem;
@@ -144,7 +144,7 @@
   }
 }
 .about__title {
-  font-family: "Avenir Next Bold";
+  font-family: "Avenir Next Demi";
   font-size: 1.5rem;
   line-height: 2rem;
   padding: 1rem;
@@ -250,7 +250,7 @@
   }
 }
 .photo-gallery__title {
-  font-family: "Avenir Next Bold";
+  font-family: "Avenir Next Demi";
   font-size: 1.5rem;
   line-height: 2rem;
   padding: 1rem;
@@ -258,7 +258,6 @@
 @media (min-width: 768px) {
   .photo-gallery__title {
     align-self: flex-start;
-    font-family: "Avenir Next Bold";
     font-size: 2.25rem;
     line-height: 3rem;
     padding: 1rem 5rem;
@@ -338,14 +337,13 @@
   }
 }
 .footer-top__title {
-  font-family: "Avenir Next Bold";
+  font-family: "Avenir Next Demi";
   font-size: 1.5rem;
   color: white;
   padding-bottom: 1rem;
 }
 @media (min-width: 768px) {
   .footer-top__title {
-    font-family: "Avenir Next Bold";
     font-size: 2.25rem;
     color: white;
     padding: 0rem 7rem 1rem 0rem;
