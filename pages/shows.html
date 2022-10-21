@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shows | Band Site</title>
+    <link rel="stylesheet" href="/./styles/shows.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.jpg">
+    <script defer src="../scripts/build-shows-page.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="header-nav">
+            <a href="../index.html">
+                <img src="../assets/logos/Logo-bandsite.svg" alt="logo" class="header__logo"/>
+            </a>
+            <ul class="header-nav__ul">
+                <a href="../index.html" class="header-nav__ul-link"><li>Biography</li></a>
+                <a href="./shows.html" class="header-nav__ul-link active-link"><li>Shows</li></a>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="flex-column">
+            <h2 class="hero__subtitle">Beautiful Beasts Album</h2>
+            <div>
+                <h1 class="hero__title hero__title--first-header">Queen of Yellow <span class="hero__span--top">x</span></h1>
+                <h1 class="hero__title hero__title--third-header"><span class="hero__span--bottom">x </span> For The Stings</h1>
+            </div>
+        </div>        
+        
+        <iframe class="hero__song" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1364948572%3Fsecret_token%3Ds-MMOzKatdMoD&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+            
+    </section>
+
+    <section class="shows">
+        <h1 class="shows__title">Shows</h1>
+        <div class="shows-table">         
+            <div class="flex-row">
+                <h2 class="shows-record-inner-container__header--non-mobile">date</h2>
+                <h2 class="shows-record-inner-container__header--non-mobile
+                shows-record-inner-container__header--non-mobile-venue">venue</h2>
+                <h2 class="shows-record-inner-container__header--non-mobile 
+                shows-record-inner-container__header--non-mobile-location">location</h2>
+            </div>
+        </div>
+            
+            <!-- <div class="shows-record">
+
+            <div class="shows-record-inner-container">
+                <h2 class="shows-record-inner-container__header">date</h2>
+                <p class="shows-record-inner-container__info">mon sept 06 2021</p>
+            </div>
+
+            <div class="shows-record-inner-container">
+                <h2 class="shows-record-inner-container__header">venue</h2>
+                <p class="shows-record-inner-container__info--font400">ronald lane</p>
+            </div>
+
+            <div class="shows-record-inner-container">
+                <h2 class="shows-record-inner-container__header">location</h2>
+                <p class="shows-record-inner-container__info--font400">san francisco, <span class="shows-record-inner-container__info--uppercase">ca</span></p>
+            </div>
+            
+            <button class="shows-record__button">buy tickets</button>
+        </div>
+        
+        <div class="shows-record">
+            
+            <div class="shows-record-inner-container">
+                <h2 class="shows-record-inner-container__header mobile-only">date</h2>
+                <p class="shows-record-inner-container__info">mon sept 06 2021</p>
+            </div>
+
+            <div class="shows-record-inner-container">
+                <h2 class="shows-record-inner-container__header mobile-only">venue</h2>
+                <p class=" shows-record-inner-container__info 
+                           shows-record-inner-container__info--font400">ronald lane</p>
+            </div>
+
+            <div class="shows-record-inner-container">
+                <h2 class="shows-record-inner-container__header mobile-only">location</h2>
+                <p class="shows-record-inner-container__info
+                          shows-record-inner-container__info--font400">san francisco, <span class="shows-record-inner-container__info--uppercase">ca</span></p>
+            </div>
+
+            <button class="shows-record__button">buy tickets</button>
+        </div> -->
+    </section>
+
+        <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-top__left">
+                <h1 class="footer-top__title">Get in Touch</h1>
+                <div class="footer-top__icons">
+                    <img src="../assets/icons/SVG/Icon-instagram.svg" alt="instagram" class="footer-top__icon--instagram">
+                    <img src="../assets/icons/SVG/Icon-facebook.svg" alt="facebook" class="footer-top__icon--facebook">
+                    <img src="../assets/icons/SVG/Icon-twitter.svg" alt="twitter" class="footer-top__icon--twitter">
+                </div>
+            </div>
+                <img src="../assets/logos/Logo-bandsite.svg" alt="logo" class="footer-top__icon--top-logo">
+        </div>
+
+        <div class="footer-center">
+            <div class="footer-center__section">
+                <div>
+                    <p class="footer-center__text">Cam Adams</p>
+                    <p class="footer-center__text">The Bees Knees Management</p>
+                </div>
+
+                <div>
+                    <p class="footer-center__text">503 Broadway Penthouse,</p>
+                    <p class="footer-center__text">New York, NY 10012, USA</p>
+                </div>
+                <p class="footer-center__text">info@thebeesknees.com</p>
+            </div>
+
+            <div class="footer-center__section">
+                <div>
+                    <p class="footer-center__text">Pearl Gregg</p>
+                    <p class="footer-center__text">Limitless Artist Group</p>
+                </div>
+
+                <div>
+                    <p class="footer-center__text">Booking Agent for</p>
+                    <p class="footer-center__text">USA/ South America/ Japan</p>
+                </div>
+                <p class="footer-center__text">pearl.gregg@limitlessag.com</p>
+            </div>
+
+            <div class="footer-center__section">
+                <div>
+                    <p class="footer-center__text">Carson Whyte</p>
+                    <p class="footer-center__text">ARCH Entertainment</p>
+                </div>
+
+                <div>
+                    <p class="footer-center__text">Booking Agent for</p>
+                    <p class="footer-center__text">UK/ EU/ AU</p>
+                </div>
+                <a href="mailto:marcelo.vital.brasil@gmail.com" class="email">
+                    <p class="footer-center__text ">cwhyte@archentertainment.com</p>
+                </a>
+            </div>
+        </div>
+
+        <img src="../assets/logos/Logo-bandsite.svg" alt="logo" class="footer-bottom__icon">
+        <p class="footer-bottom__text">Copyright The Bees Knees &copy; 2021 All Rights Reserved</p>
+    </footer>
+</body>
+</html>
