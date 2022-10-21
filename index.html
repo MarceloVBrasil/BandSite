@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Band Site</title>
+    <title>Bio | Band Site</title>
     <link rel="stylesheet" href="./styles/bio.css">
     <link rel="icon" type="image/x-icon" href="./assets/images/favicon.jpg">
+    <script defer src="./scripts/index-page.js"></script>
 </head>
 <body>
     <header class="header">
@@ -15,8 +16,8 @@
                 <img src="./assets/logos/Logo-bandsite.svg" alt="logo" class="header__logo"/>
             </a>
             <ul class="header-nav__ul">
-                <a href="" class="header-nav__ul-link active-link"><li>Biography</li></a>
-                <a href="" class="header-nav__ul-link"><li>Shows</li></a>
+                <a href="./index.html" class="header-nav__ul-link active-link"><li>Biography</li></a>
+                <a href="./pages/shows.html" class="header-nav__ul-link"><li>Shows</li></a>
             </ul>
         </nav>
     </header>
@@ -26,16 +27,16 @@
     </section>
 
     <section class="about">
-        <h1 class="about__title">About the Musicians</h1>
+        <h2 class="about__title">About the Musicians</h2>
         <img src="./assets/images/band.jpg" alt="band" class="about__image"/>
 
         <p class="about__caption">"We push each other to be the best. It's not uncommon for one
         'of us to say 'this needs to be better, back to the drawing board'"</p>
         <p class="about__text">- Bryan Teddy, lead vocalist of The Bees Knees</p>
 
-        <h2 class="about__subtitle">
+        <h3 class="about__subtitle">
             The Bees Knees
-        </h2>
+        </h3>
 
         <div class="about-grid">
             <p class="about-grid__text">
@@ -49,7 +50,7 @@
     </section>
 
     <section class="photo-gallery">
-        <h1 class="photo-gallery__title">Photo Gallery</h1>
+        <h2 class="photo-gallery__title">Photo Gallery</h2>
 
         <div class="photo-gallery-grid">
             
@@ -75,10 +76,66 @@
         </div>
     </section>
 
+        <section class="conversation">
+        <h2 class="conversation__title">Join the Conversation</h2>
+        
+        <form class="conversation-form">
+            <div class="flex-column-container">
+                <label class="conversation-form__label" for="name">name</label>
+                <div class="flex-row-container">
+                    <img src="./assets/images/Mohan-muruge.jpg" alt="avatar" 
+                    class="conversation-form__image"/> 
+                    <input name="name" type="text" placeholder="Enter your name" 
+                    class="conversation-form__input"
+                    id="name" >
+                </div>
+            </div>
+            
+            
+            <div class="flex-column-container">
+                <label for="comment" class="conversation-form__label">comment</label>
+                <textarea class="conversation-form__input--big" 
+                placeholder="Add a new comment" name="message"
+                id="comment"></textarea>
+            </div>
+            
+            <button class="conversation-form__button" type="submit">comment</button>
+        </form>
+
+        <div class="flex-column-container conversation-comments">
+            <!-- <article class="conversation-comments-comment">
+                <div class="flex-row-container--space-between">
+                    <div class="conversation-comments-comment__user-pic"></div>
+                    <h2 class="conversation-comments-comment__user-name">Connor Walton</h2>
+                    <p class="conversation-comments-comment__date">02/17/2021</p>
+                </div>
+                <p class="conversation-comments-comment__message">This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it contains.</p>
+            </article>
+
+            <article class="conversation-comments-comment">
+                <div class="flex-row-container--space-between">
+                    <div class="conversation-comments-comment__user-pic"></div>
+                    <h2 class="conversation-comments-comment__user-name">Emilie Beach</h2>
+                    <p class="conversation-comments-comment__date">01/09/2021</p>
+                </div>
+                <p class="conversation-comments-comment__message">I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.</p>
+            </article>
+
+            <article class="conversation-comments-comment">
+                <div class="flex-row-container--space-between">
+                    <div class="conversation-comments-comment__user-pic"></div>
+                    <h2 class="conversation-comments-comment__user-name">Miles Acosta</h2>
+                    <p class="conversation-comments-comment__date">12/20/2020</p>
+                </div>
+                <p class="conversation-comments-comment__message">I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.</p>
+            </article> -->
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="footer-top">
             <div class="footer-top__left">
-                <h1 class="footer-top__title">Get in Touch</h1>
+                <h2 class="footer-top__title">Get in Touch</h2>
                 <div class="footer-top__icons">
                     <img src="./assets/icons/SVG/Icon-instagram.svg" alt="instagram" class="footer-top__icon--instagram">
                     <img src="./assets/icons/SVG/Icon-facebook.svg" alt="facebook" class="footer-top__icon--facebook">
