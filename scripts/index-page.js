@@ -50,11 +50,16 @@ form.addEventListener("submit", (e) => {
 
   currentComments.push(new_comment);
   saveComments(currentComments);
-  displayComment(new_comment);
+  clearCommentsSection();
+  currentComments.forEach(displayComment);
 
   authorNameElement.value = "";
   authorMessageElement.value = "";
 });
+
+function clearCommentsSection() {
+  commentsSection.innerHTML = "";
+}
 
 function removeInvalidFormClass(element) {
   element.classList.remove("invalid-form");
