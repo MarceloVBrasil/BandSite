@@ -1,0 +1,536 @@
+@font-face {
+  font-family: "Avenir Next Bold";
+  src: url("../../assets/fonts/AvenirNextLTPro-Bold.otf");
+}
+@font-face {
+  font-family: "Avenir Next Demi";
+  src: url("../../assets/fonts/AvenirNextLTPro-Demi.otf");
+}
+@font-face {
+  font-family: "Avenir Next Regular";
+  src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf");
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  padding-top: 1rem;
+  background-color: #323232;
+}
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: flex-start;
+    -moz-column-gap: 1.5rem;
+         column-gap: 1.5rem;
+    padding: 0rem 5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .header {
+    padding: 0rem 10rem;
+  }
+}
+.header__logo {
+  cursor: pointer;
+  width: 12rem;
+}
+@media (min-width: 768px) {
+  .header__logo {
+    width: 16rem;
+    padding-right: 2rem;
+  }
+}
+.header-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .header-nav {
+    flex-direction: row;
+    -moz-column-gap: 7rem;
+         column-gap: 7rem;
+    width: auto;
+  }
+}
+.header-nav__ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .header-nav__ul {
+    width: auto;
+  }
+}
+.header-nav__ul-link {
+  font-family: "Avenir Next Demi", "sans-serif";
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-decoration: none;
+  color: #e0e0e0;
+  cursor: pointer;
+  padding: 1rem 0rem;
+  width: 100%;
+  border-bottom: 5px solid transparent;
+}
+@media (min-width: 768px) {
+  .header-nav__ul-link {
+    line-height: 2.75rem;
+    width: auto;
+    padding: 3rem 0;
+    margin-right: 3rem;
+  }
+}
+.header-nav__ul-link:hover {
+  border-bottom: 5px solid #FFFFFF;
+}
+
+.active-link {
+  border-bottom: 5px solid #FFFFFF;
+}
+
+.hero {
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  background-image: url("../assets/images/hero-shows.jpg");
+  background-size: cover;
+  color: #FFFFFF;
+  isolation: isolate;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media (min-width: 1280px) {
+  .hero {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  z-index: -1;
+}
+.hero .flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50%;
+}
+.hero__subtitle {
+  font-family: "Avenir Next Demi", "sans-serif";
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .hero__subtitle {
+    font-size: 1.8rem;
+  }
+}
+.hero__title {
+  font-family: "Avenir Next Demi", "sans-serif";
+  font-weight: 600;
+  font-size: 2.15rem;
+}
+@media (min-width: 768px) {
+  .hero__title {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1280px) {
+  .hero__title {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 1280px) {
+  .hero__span--top {
+    display: none;
+  }
+}
+.hero__span--bottom {
+  display: none;
+}
+@media (min-width: 1280px) {
+  .hero__span--bottom {
+    display: inline-block;
+  }
+}
+.hero__song {
+  max-width: 400px;
+  max-height: 200px;
+}
+@media (min-width: 1280px) {
+  .hero__song {
+    position: relative;
+    margin-top: 7rem;
+  }
+}
+
+.shows {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  row-gap: 2rem;
+}
+@media (min-width: 768px) {
+  .shows {
+    padding: 2rem 5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .shows {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2.5rem 0 0 5rem;
+  }
+}
+.shows .flex-row {
+  display: none;
+}
+@media (min-width: 768px) {
+  .shows .flex-row {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    width: calc(100% - 12rem);
+  }
+}
+@media (min-width: 1280px) {
+  .shows .flex-row {
+    width: 100%;
+    padding: 0 5.8rem;
+    justify-content: space-between;
+  }
+}
+.shows .selected {
+  background-color: hsl(0deg, 0%, 78%);
+}
+@media (min-width: 768px) {
+  .shows .mobile-only {
+    display: none;
+  }
+}
+.shows__title {
+  font-family: "Avenir Next Demi", "sans-serif";
+  font-weight: 600;
+  font-size: 2.15rem;
+}
+.shows-record {
+  min-height: 20rem;
+  padding: 0rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-bottom: 3px solid #e0e0e0;
+  cursor: pointer;
+}
+.shows-record:hover:not(.selected) {
+  background-color: #e0e0e0;
+}
+@media (min-width: 768px) {
+  .shows-record {
+    min-height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    border-bottom: 3px solid #e0e0e0;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-record {
+    width: 100%;
+  }
+}
+.shows-record-inner-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+@media (min-width: 768px) {
+  .shows-record-inner-container {
+    row-gap: 3rem;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-record-inner-container {
+    padding: 0 5rem;
+  }
+}
+.shows-record-inner-container__header, .shows-record-inner-container__header--non-mobile {
+  text-transform: uppercase;
+  font-family: "Avenir Next Demi", "sans-serif";
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: hsl(0deg, 0%, 69%);
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .shows-record-inner-container__header, .shows-record-inner-container__header--non-mobile {
+    display: none;
+  }
+}
+.shows-record-inner-container__header--non-mobile {
+  display: block;
+  width: auto;
+}
+@media (min-width: 768px) {
+  .shows-record-inner-container__header--non-mobile-venue {
+    padding-left: 2rem;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-record-inner-container__header--non-mobile-venue {
+    margin-right: -1rem;
+  }
+}
+@media (min-width: 768px) {
+  .shows-record-inner-container__header--non-mobile-location {
+    margin-right: 2rem;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-record-inner-container__header--non-mobile-location {
+    margin-right: 18rem;
+  }
+}
+.shows-record-inner-container__info {
+  text-transform: capitalize;
+  font-family: "Avenir Next Demi", "sans-serif";
+  font-weight: 600;
+  color: #323232;
+  font-size: 1.2rem;
+}
+@media (min-width: 768px) {
+  .shows-record-inner-container__info {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 830px) {
+  .shows-record-inner-container__info {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-record-inner-container__info {
+    font-size: 1.1rem;
+  }
+}
+@media (min-width: 1293px) {
+  .shows-record-inner-container__info {
+    font-size: 1.2rem;
+  }
+}
+.shows-record-inner-container__info--font400 {
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  font-family: "Avenir Next Regular", "sans-serif";
+  font-weight: 400;
+}
+@media (min-width: 768px) {
+  .shows-record-inner-container__info--font400 {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 830px) {
+  .shows-record-inner-container__info--font400 {
+    font-size: 1.2rem;
+  }
+}
+.shows-record__button {
+  text-transform: uppercase;
+  font-family: "Avenir Next Demi", "sans-serif";
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  background-color: #323232;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 1.2rem 1rem;
+}
+@media (min-width: 768px) {
+  .shows-record__button {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+}
+@media (min-width: 830px) {
+  .shows-record__button {
+    font-size: 1.2rem;
+  }
+}
+.shows-record__button:hover {
+  background-color: #000000;
+}
+
+.footer {
+  margin-top: 2rem;
+  background-color: #323232;
+  padding: 1rem 0rem;
+}
+@media (min-width: 768px) {
+  .footer {
+    padding: 1rem 5rem;
+    background-color: #323232;
+  }
+}
+@media (min-width: 1280px) {
+  .footer {
+    padding: 1rem 10rem;
+  }
+}
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0 1rem 1rem;
+}
+@media (min-width: 768px) {
+  .footer-top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    -moz-column-gap: 1rem;
+         column-gap: 1rem;
+  }
+}
+.footer-top__left {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .footer-top__left {
+    flex-direction: row;
+  }
+}
+.footer-top__title {
+  font-family: "Avenir Next Demi", "sans-serif";
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: white;
+  padding-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .footer-top__title {
+    font-size: 2.25rem;
+    color: white;
+    padding: 0rem 7rem 1rem 0rem;
+  }
+}
+.footer-top__icons {
+  display: flex;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+}
+.footer-top__icon--instagram {
+  width: 2rem;
+}
+.footer-top__icon--facebook {
+  width: 1.3rem;
+}
+.footer-top__icon--twitter {
+  width: 2rem;
+}
+.footer-top__icon--top-logo {
+  width: 10rem;
+  padding-right: 2rem;
+  display: none;
+}
+@media (min-width: 768px) {
+  .footer-top__icon--top-logo {
+    display: block;
+  }
+}
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: auto;
+  margin: 0;
+  padding-left: 1rem;
+}
+@media (min-width: 768px) {
+  .footer-center {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+.footer-center__section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  row-gap: 2rem;
+  width: auto;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .footer-center__section {
+    margin: 0;
+  }
+}
+.footer-center__text {
+  font-family: "Avenir Next Regular", "sans-serif";
+  font-weight: 400;
+  color: white;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
+}
+@media (min-width: 768px) {
+  .footer-center__text {
+    width: 20rem;
+  }
+}
+.footer-bottom__text {
+  font-family: "Avenir Next Regular", "sans-serif";
+  font-weight: 400;
+  font-size: 0.74rem;
+  color: white;
+  margin: 3rem 0;
+  padding-left: 1rem;
+}
+@media (min-width: 335px) {
+  .footer-bottom__text {
+    font-size: 0.8rem;
+  }
+}
+.footer-bottom__icon {
+  margin-top: 5rem;
+  margin-left: 1rem;
+  max-width: 12rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+@media (min-width: 768px) {
+  .footer-bottom__icon {
+    display: none;
+  }
+}
+
+.email {
+  text-decoration: none;
+}/*# sourceMappingURL=shows.css.map */
