@@ -3,18 +3,3 @@
 $Font700: "Avenir Next Bold", "sans-serif";
 $Font600: "Avenir Next Demi", "sans-serif";
 $Font400: "Avenir Next Regular", "sans-serif";
-
-@mixin font400{
-    font-family: $Font400;
-    font-weight: 400;
-}
-
-@mixin font600{
-    font-family: $Font600;
-    font-weight: 600;
-}
-
-@mixin font700{
-    font-family: $Font700;
-    font-weight: 700;
-}
