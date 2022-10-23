@@ -528,7 +528,7 @@
 
             @include tablet{
                 flex-direction: row;
-                column-gap: 2rem;
+                column-gap: 2.5rem;
             }
         }
 
@@ -586,7 +586,7 @@
             flex-direction: row;
             flex-wrap: wrap;
             width: 100%;
-            column-gap: 2rem;
+            column-gap: 2.5rem;
         }
 
          &__section{
@@ -630,9 +630,13 @@
 
     &-bottom__text{
         @include font400;
-        font-size: 0.68rem;
+        font-size: 0.74rem;
         color: white;
         margin: 2rem  0;
+
+        @include width335{            
+            font-size: 0.8rem;
+        }
 
         @include tablet{
             font-size: 0.9rem;
@@ -650,7 +654,6 @@
         }
     }
 }
-
 
 .email{
     text-decoration: none;

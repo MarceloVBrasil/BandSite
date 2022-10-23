@@ -436,8 +436,8 @@
 @media (min-width: 768px) {
   .footer-top__left {
     flex-direction: row;
-    -moz-column-gap: 2rem;
-         column-gap: 2rem;
+    -moz-column-gap: 2.5rem;
+         column-gap: 2.5rem;
   }
 }
 .footer-top__title {
@@ -493,8 +493,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    -moz-column-gap: 2rem;
-         column-gap: 2rem;
+    -moz-column-gap: 2.5rem;
+         column-gap: 2.5rem;
   }
 }
 .footer-center__section {

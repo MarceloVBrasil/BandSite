@@ -575,8 +575,8 @@
 @media (min-width: 768px) {
   .footer-top__left {
     flex-direction: row;
-    -moz-column-gap: 2rem;
-         column-gap: 2rem;
+    -moz-column-gap: 2.5rem;
+         column-gap: 2.5rem;
   }
 }
 .footer-top__title {
@@ -632,8 +632,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    -moz-column-gap: 2rem;
-         column-gap: 2rem;
+    -moz-column-gap: 2.5rem;
+         column-gap: 2.5rem;
   }
 }
 .footer-center__section {
@@ -673,9 +673,14 @@
 .footer-bottom__text {
   font-family: "Avenir Next Regular", "sans-serif";
   font-weight: 400;
-  font-size: 0.68rem;
+  font-size: 0.74rem;
   color: white;
   margin: 2rem 0;
+}
+@media (min-width: 335px) {
+  .footer-bottom__text {
+    font-size: 0.8rem;
+  }
 }
 @media (min-width: 768px) {
   .footer-bottom__text {
