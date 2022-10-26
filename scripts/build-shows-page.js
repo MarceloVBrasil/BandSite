@@ -1,26 +1,70 @@
-const RECORDS = [
-  {
-    date: "mon sept 06 2021",
-    venue: "ronald lane",
-    location: "san francisco, ca",
-  },
-
-  {
-    date: "tue sept 21 2021",
-    venue: "pier 3 east",
-    location: "san francisco, ca",
-  },
-
-  {
-    date: "fri oct 15 2021",
-    venue: "view lounge",
-    location: "san francisco, ca",
-  },
-];
-
+const GLOBAL_VARIABLES = {
+  apiKey: "",
+  BASE_URL: "https://project-1-api.herokuapp.com",
+};
 const table = document.querySelector(".shows-table");
 
-RECORDS.forEach(addRecord);
+GLOBAL_VARIABLES.apiKey = await getApiKey();
+const records = await populateShowsTable();
+
+records.forEach(addRecord);
+
+async function getApiKey() {
+  const response = await axios.get(`${GLOBAL_VARIABLES.BASE_URL}/register`);
+  return response.data;
+}
+
+async function populateShowsTable() {
+  const response = await axios(
+    `${GLOBAL_VARIABLES.BASE_URL}/showdates?api_key=${GLOBAL_VARIABLES.apiKey}`
+  );
+  const shows = response.data;
+  const RECORDS = [];
+
+  shows.forEach((show) => {
+    const newShow = {
+      id: show.id,
+      date: getFormattedDate(new Date(show.date)),
+      venue: show.place,
+      location: show.location,
+    };
+    RECORDS.push(newShow);
+  });
+  return RECORDS;
+}
+
+function getFormattedDate(date) {
+  const weekday = getDayOfWeek(date.getDay());
+  const month = getMonthName(date.getMonth());
+  const day = date.getDate();
+  const year = date.getFullYear();
+  return `${weekday} ${month} ${day} ${year}`;
+}
+
+function getDayOfWeek(day) {
+  if (day === 0) return "Sun";
+  if (day === 1) return "Mon";
+  if (day === 2) return "Tue";
+  if (day === 3) return "Wed";
+  if (day === 4) return "Thu";
+  if (day === 5) return "Fri";
+  if (day === 6) return "Sat";
+}
+
+function getMonthName(month) {
+  if (month === 0) return "Jan";
+  if (month === 1) return "Feb";
+  if (month === 2) return "Mar";
+  if (month === 3) return "Apr";
+  if (month === 4) return "May";
+  if (month === 5) return "Jun";
+  if (month === 6) return "Jul";
+  if (month === 7) return "Aug";
+  if (month === 8) return "Sep";
+  if (month === 9) return "Oct";
+  if (month === 10) return "Nov";
+  if (month === 11) return "Dec";
+}
 
 function createRecord_div() {
   const div = document.createElement("div");

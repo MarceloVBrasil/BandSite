@@ -1,28 +1,15 @@
-const COMMENTS = [
-  {
-    author: "miles acosta",
-    date: "12/20/2020",
-    message:
-      "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-  },
-
-  {
-    author: "emilie beach",
-    date: "01/09/2021",
-    message:
-      "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
-  },
-
-  {
-    author: "connor walton",
-    date: "02/17/2021",
-    message:
-      "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it contains.",
-  },
-];
-
 const commentsSection = document.querySelector(".conversation-comments");
-const currentComments = loadComments();
+const GLOBAL_VARIABLES = {
+  apiKey: "",
+  BASE_URL: "https://project-1-api.herokuapp.com",
+};
+const desktop = 1280;
+
+setDeleteButtonAndLikeButton();
+
+GLOBAL_VARIABLES.apiKey = await getApiKey();
+let currentComments = await loadComments();
+currentComments.sort(sortByDate);
 currentComments.forEach(displayComment);
 
 const form = document.querySelector(".conversation-form");
@@ -30,32 +17,114 @@ const form = document.querySelector(".conversation-form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const authorNameElement = form.elements.name;
-  const authorMessageElement = form.elements.message;
+  const formData = {
+    name: form.elements.name,
+    comment: form.elements.message,
+  };
 
-  if (authorNameElement.value === "" || authorMessageElement.value === "") {
-    authorNameElement.classList.add("invalid-form");
-    authorMessageElement.classList.add("invalid-form");
-    setTimeout(removeInvalidFormClass, 300, authorNameElement);
-    setTimeout(removeInvalidFormClass, 300, authorMessageElement);
+  if (formData.name.value === "" || formData.comment.value === "") {
+    formData.name.classList.add("invalid-form");
+    formData.comment.classList.add("invalid-form");
+    setTimeout(removeInvalidFormClass, 300, formData.name);
+    setTimeout(removeInvalidFormClass, 300, formData.comment);
     return;
   }
 
-  const date = getFormattedDate(new Date());
-  const new_comment = {
-    author: authorNameElement.value,
-    date,
-    message: authorMessageElement.value,
-  };
+  const promise = postComment({
+    name: formData.name.value,
+    comment: formData.comment.value,
+  });
+  promise
+    .then((data) => {
+      const newComment = {
+        id: data.id,
+        author: data.name,
+        message: data.comment,
+        likes: 0,
+        date: data.timestamp,
+      };
 
-  currentComments.push(new_comment);
-  saveComments(currentComments);
+      currentComments.push(newComment);
+      clearCommentsSection();
+      currentComments.sort(sortByDate);
+      currentComments.forEach(displayComment);
+    })
+    .catch((error) => console.log(error));
+
+  formData.name.value = "";
+  formData.comment.value = "";
+});
+
+function sortByDate(commentA, commentB) {
+  return commentA.date - commentB.date;
+}
+
+async function postComment(comment) {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  const response = await axios.post(
+    `${GLOBAL_VARIABLES.BASE_URL}/comments?api_key=${GLOBAL_VARIABLES.apiKey}`,
+    comment,
+    {
+      headers,
+    }
+  );
+  return response.data;
+}
+
+async function getApiKey() {
+  const response = await axios.get(`${GLOBAL_VARIABLES.BASE_URL}/register`);
+  return response.data;
+}
+
+async function getAllCommentsFromApi() {
+  const response = await axios.get(
+    `${GLOBAL_VARIABLES.BASE_URL}/comments?api_key=${GLOBAL_VARIABLES.apiKey}`
+  );
+  const comments = response.data;
+  const COMMENTS = [];
+
+  comments.forEach((comment) => {
+    const newComment = {
+      id: comment.id,
+      author: comment.name,
+      message: comment.comment,
+      likes: comment.likes,
+      date: comment.timestamp,
+      liked: comment.likes % 2 === 1,
+    };
+    COMMENTS.push(newComment);
+  });
+
+  return COMMENTS;
+}
+
+async function deleteComment(e) {
+  const comment = e.target;
+  await axios.delete(
+    `${GLOBAL_VARIABLES.BASE_URL}/comments/${comment.dataset.id}?api_key=${GLOBAL_VARIABLES.apiKey}`
+  );
+  currentComments = currentComments.filter((c) => c.id !== comment.dataset.id);
   clearCommentsSection();
   currentComments.forEach(displayComment);
+}
 
-  authorNameElement.value = "";
-  authorMessageElement.value = "";
-});
+async function likeComment(e) {
+  const likeButton = e.target;
+  const comment = currentComments.find((c) => c.id === likeButton.dataset.id);
+
+  // ideally, if comment.liked is true, the api call would remove 1 like from the likes counter.
+  // right now, the api gets called every time, so that the like button styles is in sync with comment.liked
+  await axios.put(
+    `${GLOBAL_VARIABLES.BASE_URL}/comments/${comment.id}/like?api_key=${GLOBAL_VARIABLES.apiKey}`
+  );
+
+  likeButton.classList.toggle(
+    "conversation-comments-comment__like-button--liked"
+  );
+  comment.liked = !comment.liked;
+}
 
 function clearCommentsSection() {
   commentsSection.innerHTML = "";
@@ -69,8 +138,8 @@ function saveComments(data) {
   localStorage.setItem("comments", JSON.stringify(data));
 }
 
-function loadComments() {
-  return JSON.parse(localStorage.getItem("comments")) || COMMENTS;
+async function loadComments() {
+  return await getAllCommentsFromApi();
 }
 
 function getFormattedDate(date) {
@@ -84,10 +153,85 @@ function getMonth(date) {
   return date.getMonth() + 1;
 }
 
+function displayDeleteButton(e) {
+  const deleteButton = e.target.querySelector(
+    ".conversation-comments-comment__delete-button"
+  );
+  deleteButton.style.display = "block";
+}
+
+function hideDeleteButton(e) {
+  const deleteButton = e.target.querySelector(
+    ".conversation-comments-comment__delete-button"
+  );
+  deleteButton.style.display = "none";
+}
+
+function displayLikeButton(e) {
+  const likeButton = e.target.querySelector(
+    ".conversation-comments-comment__like-button"
+  );
+  likeButton.style.display = "block";
+}
+
+function hideLikeButton(e) {
+  const likeButton = e.target.querySelector(
+    ".conversation-comments-comment__like-button"
+  );
+  likeButton.style.display = "none";
+}
+
+function hideLikeButtonByDefault(article) {
+  const likeButton = article.querySelector(
+    ".conversation-comments-comment__like-button"
+  );
+  likeButton.style.display = "none";
+}
+
+function hideDeleteButtonByDefault(article) {
+  const deleteButton = article.querySelector(
+    ".conversation-comments-comment__delete-button"
+  );
+  deleteButton.style.display = "none";
+}
+
 function createComment_article() {
   const article = document.createElement("article");
   article.classList.add("conversation-comments-comment");
+
+  if (window.innerWidth >= desktop) {
+    article.addEventListener("mouseenter", displayDeleteButton);
+    article.addEventListener("mouseleave", hideDeleteButton);
+    article.addEventListener("mouseenter", displayLikeButton);
+    article.addEventListener("mouseleave", hideLikeButton);
+  }
   return article;
+}
+
+function createCommentDeleteButton_span(comment) {
+  const span = document.createElement("span");
+  span.classList.add(
+    "conversation-comments-comment__delete-button",
+    "material-symbols-outlined"
+  );
+  span.innerText = "close";
+  span.addEventListener("click", deleteComment);
+  span.dataset.id = comment.id;
+  return span;
+}
+
+function createCommentLikeButton_span(comment) {
+  const span = document.createElement("span");
+  span.classList.add(
+    "conversation-comments-comment__like-button",
+    "material-symbols-outlined"
+  );
+  if (comment.liked)
+    span.classList.add("conversation-comments-comment__like-button--liked");
+  span.innerText = "thumb_up";
+  span.addEventListener("click", likeComment);
+  span.dataset.id = comment.id;
+  return span;
 }
 
 function createCommentInnerContainer_div() {
@@ -112,7 +256,7 @@ function createCommentAuthor_h2(author) {
 function createCommentDate_p(date) {
   const p = document.createElement("p");
   p.classList.add("conversation-comments-comment__date");
-  p.innerText = date;
+  p.innerText = getFormattedDate(new Date(date));
   return p;
 }
 
@@ -125,6 +269,8 @@ function createCommentMessage_p(message) {
 
 function displayComment(comment) {
   const new_comment = createComment_article();
+  const deleteButton = createCommentDeleteButton_span(comment);
+  const likeButton = createCommentLikeButton_span(comment);
 
   const comment_inner_container = createCommentInnerContainer_div();
   const comment_author_picture = createCommentAuthorPicture_div();
@@ -139,6 +285,50 @@ function displayComment(comment) {
 
   const comment_message = createCommentMessage_p(comment.message);
 
-  new_comment.append(comment_inner_container, comment_message);
+  new_comment.append(
+    deleteButton,
+    likeButton,
+    comment_inner_container,
+    comment_message
+  );
+
   commentsSection.prepend(new_comment);
+  if (innerWidth >= desktop) {
+    hideLikeButtonByDefault(new_comment);
+    hideDeleteButtonByDefault(new_comment);
+  }
+}
+
+function setDeleteButtonAndLikeButton() {
+  addEventListener("resize", () => {
+    const commentsContainers = document.querySelectorAll(
+      ".conversation-comments-comment"
+    );
+    commentsContainers.forEach((article) => {
+      const deleteButton = article.querySelector(
+        ".conversation-comments-comment__delete-button"
+      );
+      const likeButton = article.querySelector(
+        ".conversation-comments-comment__like-button"
+      );
+
+      deleteButton.style.display = "none";
+      likeButton.style.display = "none";
+
+      if (innerWidth >= desktop) {
+        article.addEventListener("mouseleave", hideDeleteButton);
+        article.addEventListener("mouseenter", displayDeleteButton);
+        article.addEventListener("mouseleave", hideLikeButton);
+        article.addEventListener("mouseenter", displayLikeButton);
+      } else {
+        article.removeEventListener("mouseleave", hideDeleteButton);
+        article.removeEventListener("mouseenter", displayDeleteButton);
+        article.removeEventListener("mouseleave", hideLikeButton);
+        article.removeEventListener("mouseenter", displayLikeButton);
+
+        deleteButton.style.display = "block";
+        likeButton.style.display = "block";
+      }
+    });
+  });
 }
