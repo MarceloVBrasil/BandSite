@@ -5,8 +5,6 @@ const GLOBAL_VARIABLES = {
 };
 const desktop = 1280;
 
-setDeleteButtonAndLikeButton();
-
 GLOBAL_VARIABLES.apiKey = await getApiKey();
 let currentComments = await loadComments();
 currentComments.sort(sortByDate);
@@ -198,13 +196,6 @@ function hideDeleteButtonByDefault(article) {
 function createComment_article() {
   const article = document.createElement("article");
   article.classList.add("conversation-comments-comment");
-
-  if (window.innerWidth >= desktop) {
-    article.addEventListener("mouseenter", displayDeleteButton);
-    article.addEventListener("mouseleave", hideDeleteButton);
-    article.addEventListener("mouseenter", displayLikeButton);
-    article.addEventListener("mouseleave", hideLikeButton);
-  }
   return article;
 }
 
@@ -291,44 +282,5 @@ function displayComment(comment) {
     comment_inner_container,
     comment_message
   );
-
   commentsSection.prepend(new_comment);
-  if (innerWidth >= desktop) {
-    hideLikeButtonByDefault(new_comment);
-    hideDeleteButtonByDefault(new_comment);
-  }
-}
-
-function setDeleteButtonAndLikeButton() {
-  addEventListener("resize", () => {
-    const commentsContainers = document.querySelectorAll(
-      ".conversation-comments-comment"
-    );
-    commentsContainers.forEach((article) => {
-      const deleteButton = article.querySelector(
-        ".conversation-comments-comment__delete-button"
-      );
-      const likeButton = article.querySelector(
-        ".conversation-comments-comment__like-button"
-      );
-
-      deleteButton.style.display = "none";
-      likeButton.style.display = "none";
-
-      if (innerWidth >= desktop) {
-        article.addEventListener("mouseleave", hideDeleteButton);
-        article.addEventListener("mouseenter", displayDeleteButton);
-        article.addEventListener("mouseleave", hideLikeButton);
-        article.addEventListener("mouseenter", displayLikeButton);
-      } else {
-        article.removeEventListener("mouseleave", hideDeleteButton);
-        article.removeEventListener("mouseenter", displayDeleteButton);
-        article.removeEventListener("mouseleave", hideLikeButton);
-        article.removeEventListener("mouseenter", displayLikeButton);
-
-        deleteButton.style.display = "block";
-        likeButton.style.display = "block";
-      }
-    });
-  });
 }
