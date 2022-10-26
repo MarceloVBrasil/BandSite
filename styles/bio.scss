@@ -454,6 +454,7 @@
         justify-content: center;
         width: 100%;
         border-bottom: 3px solid $Mercury;
+        position: relative;
 
         @include tablet{
             width: 95%;
@@ -461,6 +462,26 @@
 
         @include desktop{
             width: 79%;
+        }
+
+        &__delete-button{
+            position: absolute;
+            bottom: 0;
+            right: 0.0rem;
+            font-size: 0.8rem !important;
+            cursor: pointer;
+        }
+
+        &__like-button {
+            position: absolute;
+            bottom: 0;
+            right: 1rem;
+            cursor: pointer;
+            font-size: 0.8rem !important;
+            
+            &--liked {
+                color: hsl(240, 100%, 50%);
+            }
         }
 
         &__user-pic{

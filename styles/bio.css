@@ -496,6 +496,7 @@
   justify-content: center;
   width: 100%;
   border-bottom: 3px solid #e0e0e0;
+  position: relative;
 }
 @media (min-width: 768px) {
   .conversation-comments-comment {
@@ -506,6 +507,23 @@
   .conversation-comments-comment {
     width: 79%;
   }
+}
+.conversation-comments-comment__delete-button {
+  position: absolute;
+  bottom: 0;
+  right: 0rem;
+  font-size: 0.8rem !important;
+  cursor: pointer;
+}
+.conversation-comments-comment__like-button {
+  position: absolute;
+  bottom: 0;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 0.8rem !important;
+}
+.conversation-comments-comment__like-button--liked {
+  color: hsl(240deg, 100%, 50%);
 }
 .conversation-comments-comment__user-pic {
   width: 36px;
