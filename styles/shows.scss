@@ -1,6 +1,4 @@
-@use "./partials/colors" as *;
-@use "./partials/typography" as *;
-@use "./partials/mixins" as *;
+@use "./partials/variables" as *;
 
 *,*::before,*::after{
     box-sizing: border-box;
@@ -10,7 +8,7 @@
 
 .header{
     padding-top: 1rem;
-    background-color: $BandSite-Black;
+    background-color: $bandSite-black;
 
     @include tablet{   
         
@@ -64,7 +62,7 @@
                 font-size: 1.1rem;
                 line-height: 2rem;
                 text-decoration: none;
-                color: $Mercury;
+                color: $mercury;
                 cursor: pointer;
                 padding: 1rem 0 0.5rem 0;
                 width: 100%;
@@ -81,7 +79,7 @@
                 }
                 
                 &:hover{
-                    border-bottom: 5px solid $White;
+                    border-bottom: 5px solid $white;
                 }
             }
         }
@@ -91,7 +89,7 @@
 
 .active-link{
     @include font600;
-    border-bottom: 5px solid $White;
+    border-bottom: 5px solid $white;
 }
 
 .hero{  
@@ -100,7 +98,7 @@
     position: relative;
     background-image: url("../assets/images/hero-shows.jpg");
     background-size: cover;
-    color: $White;
+    color: $white;
     isolation: isolate;
     padding: 2rem;
     display: flex;
@@ -218,7 +216,7 @@
     }
 
     .selected{
-        background-color: $SelectedShow;
+        background-color: $selectedShow;
     }
 
     .mobile-only{
@@ -241,12 +239,12 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        border-bottom: 3px solid $Mercury;
+        border-bottom: 3px solid $mercury;
         cursor: pointer;
 
         &:hover:not(.selected){
             
-            background-color: $Mercury;
+            background-color: $mercury;
         }
 
         @include tablet{
@@ -257,7 +255,7 @@
             align-items: center;
             width: 100%;
             padding: 1.5rem 1rem;
-            border-bottom: 3px solid $Mercury;
+            border-bottom: 3px solid $mercury;
         }
 
         @include desktop{
@@ -286,7 +284,7 @@
                 text-transform: uppercase;
                 @include font600;
                 font-size: 0.8rem;
-                color: $Silver;
+                color: $silver;
                 width: 100%;
 
                 @include tablet{
@@ -327,7 +325,7 @@
             &__info{
                 text-transform: capitalize;
                 @include font600;
-                color: $BandSite-Black;
+                color: $bandSite-black;
                 font-size: 1.2rem;
 
                 @include tablet{
@@ -366,8 +364,8 @@
             text-transform: uppercase;
             @include font600;
             font-size: 1.5rem;
-            color: $White;
-            background-color: $BandSite-Black;
+            color: $white;
+            background-color: $bandSite-black;
             cursor: pointer;
             border: none;
             border-radius: 5px;
@@ -383,7 +381,7 @@
             }
 
             &:hover{
-                background-color: $BandSite-DarkBlack;
+                background-color: $bandSite-darkBlack;
             }
         }
     }
@@ -391,7 +389,7 @@
 
 .footer{
     margin-top: 2rem;
-    background-color: $BandSite-Black;
+    background-color: $bandSite-black;
     padding: 1rem;
 
     @include tablet{
@@ -426,12 +424,12 @@
 
         &__title{
            @include sectionHeader_mobile;
-            color: white;
+            color: $white;
             padding-bottom: 1rem;
 
             @include tablet{
                 font-size: 2.25rem;
-                color: white;
+                color: $white;
             }
         }
 
@@ -506,7 +504,7 @@
         }
 
         &__text{
-            color: white;
+            color: $white;
             width: auto;
             margin: 0;
             padding: 0;
@@ -523,7 +521,7 @@
     &-bottom__text{
         @include font400;
         font-size: 0.74rem;
-        color: white;
+        color: $white;
         margin: 2rem  0;
 
         @include width335{            

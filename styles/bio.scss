@@ -1,6 +1,4 @@
-@use "./partials/colors" as *;
-@use "./partials/typography" as *;
-@use "./partials/mixins" as *;
+@use "./partials/variables" as *;
 
 *,*::before,*::after{
     box-sizing: border-box;
@@ -10,7 +8,7 @@
 
 .header{
     padding-top: 1rem;
-    background-color: $BandSite-Black;
+    background-color: $bandSite-black;
 
     @include tablet{   
         
@@ -59,12 +57,12 @@
             }
 
             &-link{
-                @include font400;
+                @include font(400);
                 text-align: center;
                 font-size: 1.1rem;
                 line-height: 2rem;
                 text-decoration: none;
-                color: $Mercury;
+                color: $mercury;
                 cursor: pointer;
                 padding: 1rem 0 0.5rem 0;
                 width: 100%;
@@ -81,7 +79,7 @@
                 }
                 
                 &:hover{
-                    border-bottom: 5px solid $White;
+                    border-bottom: 5px solid $white;
                 }
             }
         }
@@ -90,8 +88,8 @@
 
 
 .active-link{
-    @include font600;
-    border-bottom: 5px solid $White;
+    @include font(600);
+    border-bottom: 5px solid $white;
 }
 
 .hero{
@@ -122,7 +120,7 @@
 
     &__text{
         @include pageHeader_mobile;
-        color: $White;
+        color: $white;
         padding: 0rem 1rem;
 
         @include tablet{
@@ -192,7 +190,7 @@
             width: 90%;
             margin: auto;
             margin-top: 2rem;
-            @include font600;
+            @include font(600);
             font-size: 1.25rem;
         }
     }
@@ -204,7 +202,7 @@
         @include tablet{
             width: 90%;
             margin: auto;
-            @include font600;
+            @include font(600);
             font-size: 1.75rem;
             margin-top: 4rem;
         }
@@ -224,7 +222,7 @@
         }
 
          &__text{
-            @include font400;
+            @include font(400);
             font-size: 1rem;
             line-height: 1.5rem;
         }
@@ -232,7 +230,7 @@
 }
 
 .photo-gallery{
-    background-color: $Alabaster;
+    background-color: $alabaster;
 
     @include tablet{        
         display: flex;
@@ -296,7 +294,7 @@
 
 	
 .conversation{
-    background-color: $White;
+    background-color: $white;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -315,7 +313,7 @@
 
     &__title{
         @include sectionHeader_mobile;
-        color: $BandSite-Black;
+        color: $bandSite-black;
 
         @include tablet{
             font-size: 2.25rem;
@@ -354,7 +352,7 @@
         padding: 1rem 0 1rem 4rem;
         align-self: flex-end;
         width: 100%;
-        border-bottom: 3px solid $Mercury;
+        border-bottom: 3px solid $mercury;
 
         @include tablet{
             width: 95%;
@@ -367,7 +365,7 @@
         &__label{
             @include label_mobile;
             text-transform: uppercase;
-            color: $Silver;
+            color: $silver;
             align-self: flex-start;
 
         }
@@ -386,25 +384,25 @@
         }
 
         &__input{
-           @include font400;
+           @include font(400);
             font-size: 1.0rem;
             outline: none;
-            border: 3px solid $Mercury;
+            border: 3px solid $mercury;
             border-radius: 5px;
             padding: 0.6rem;
             width: 100%;
-            background-color: $Alabaster;
+            background-color: $alabaster;
 
             @include tablet{
                 padding: 0.85rem;
             }
 
             &--big{
-                @include font400;
+                @include font(400);
                 font-size: 1.0rem;
                 outline: none;
-                border: 3px solid $Mercury;
-                background-color: $Alabaster;
+                border: 3px solid $mercury;
+                background-color: $alabaster;
                 border-radius: 5px;
                 padding: 1rem 1rem 5rem 1rem;
                 width: 100%;
@@ -414,7 +412,7 @@
         }
 
         ::placeholder{
-            color: $BandSite-Black;
+            color: $bandSite-black;
         }
 
         &__textarea{
@@ -423,12 +421,12 @@
         }
 
         &__button{
-           @include font600;
+           @include font(600);
             font-size: 1.5rem;
             border-radius: 5px;
             text-transform: uppercase;
-            color: $White;
-            background-color: $BandSite-Black;
+            color: $white;
+            background-color: $bandSite-black;
             padding: 1rem;
             margin-left: 5rem;
             width: 100%;
@@ -440,7 +438,7 @@
             }
 
             &:hover{
-                background-color: $BandSite-DarkBlack;
+                background-color: $bandSite-darkBlack;
             }
         }
     }
@@ -453,7 +451,7 @@
         align-self: flex-end;
         justify-content: center;
         width: 100%;
-        border-bottom: 3px solid $Mercury;
+        border-bottom: 3px solid $mercury;
         position: relative;
 
         @include tablet{
@@ -466,7 +464,7 @@
 
         &__delete-button{
             position: absolute;
-            bottom: 0;
+            top: 0;
             right: 0.0rem;
             font-size: 0.8rem !important;
             cursor: pointer;
@@ -484,11 +482,18 @@
             }
         }
 
+        &__like-counter {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 0.8rem;
+        }
+
         &__user-pic{
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background-color: $Mercury;
+            background-color: $mercury;
             position: absolute;
             left: -3.7rem;
             top: 0.5rem;
@@ -500,19 +505,19 @@
         }
 
         &__user-name{
-           @include font600;
+           @include font(600);
             font-size: 1.2rem;
             text-transform: capitalize;
         }
 
         &__date{
-            @include font400;
+            @include font(400);
             font-size: 1.2rem;
-            color: $Silver;
+            color: $silver;
         }
 
         &__message{
-            @include font400;
+            @include font(400);
             margin-top: -1.5rem;
         }
     }
@@ -520,7 +525,7 @@
 
 .footer{
     margin-top: 2rem;
-    background-color: $BandSite-Black;
+    background-color: $bandSite-black;
     padding: 1rem;
 
     @include tablet{
@@ -555,12 +560,12 @@
 
         &__title{
            @include sectionHeader_mobile;
-            color: white;
+            color: $white;
             padding-bottom: 1rem;
 
             @include tablet{
                 font-size: 2.25rem;
-                color: white;
+                color: $white;
             }
         }
 
@@ -626,11 +631,11 @@
             }
 
             &-top{
-                font-family: $Font600;
+                @include font(600);
             }
 
             &-bottom{
-                font-family: $Font400;
+                @include font(400);
             }
         }
 
@@ -650,7 +655,7 @@
    
 
     &-bottom__text{
-        @include font400;
+        @include font(400);
         font-size: 0.74rem;
         color: white;
         margin: 2rem  0;

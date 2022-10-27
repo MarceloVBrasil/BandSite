@@ -3,7 +3,6 @@ const GLOBAL_VARIABLES = {
   apiKey: "",
   BASE_URL: "https://project-1-api.herokuapp.com",
 };
-const desktop = 1280;
 
 GLOBAL_VARIABLES.apiKey = await getApiKey();
 let currentComments = await loadComments();
@@ -110,11 +109,10 @@ async function deleteComment(e) {
 
 async function likeComment(e) {
   const likeButton = e.target;
+  const likeCounter = likeButton.nextElementSibling;
   const comment = currentComments.find((c) => c.id === likeButton.dataset.id);
 
-  // ideally, if comment.liked is true, the api call would remove 1 like from the likes counter.
-  // right now, the api gets called every time, so that the like button styles is in sync with comment.liked
-  await axios.put(
+  const response = await axios.put(
     `${GLOBAL_VARIABLES.BASE_URL}/comments/${comment.id}/like?api_key=${GLOBAL_VARIABLES.apiKey}`
   );
 
@@ -122,6 +120,7 @@ async function likeComment(e) {
     "conversation-comments-comment__like-button--liked"
   );
   comment.liked = !comment.liked;
+  likeCounter.innerText = response.data.likes;
 }
 
 function clearCommentsSection() {
@@ -151,48 +150,6 @@ function getMonth(date) {
   return date.getMonth() + 1;
 }
 
-function displayDeleteButton(e) {
-  const deleteButton = e.target.querySelector(
-    ".conversation-comments-comment__delete-button"
-  );
-  deleteButton.style.display = "block";
-}
-
-function hideDeleteButton(e) {
-  const deleteButton = e.target.querySelector(
-    ".conversation-comments-comment__delete-button"
-  );
-  deleteButton.style.display = "none";
-}
-
-function displayLikeButton(e) {
-  const likeButton = e.target.querySelector(
-    ".conversation-comments-comment__like-button"
-  );
-  likeButton.style.display = "block";
-}
-
-function hideLikeButton(e) {
-  const likeButton = e.target.querySelector(
-    ".conversation-comments-comment__like-button"
-  );
-  likeButton.style.display = "none";
-}
-
-function hideLikeButtonByDefault(article) {
-  const likeButton = article.querySelector(
-    ".conversation-comments-comment__like-button"
-  );
-  likeButton.style.display = "none";
-}
-
-function hideDeleteButtonByDefault(article) {
-  const deleteButton = article.querySelector(
-    ".conversation-comments-comment__delete-button"
-  );
-  deleteButton.style.display = "none";
-}
-
 function createComment_article() {
   const article = document.createElement("article");
   article.classList.add("conversation-comments-comment");
@@ -220,9 +177,16 @@ function createCommentLikeButton_span(comment) {
   if (comment.liked)
     span.classList.add("conversation-comments-comment__like-button--liked");
   span.innerText = "thumb_up";
-  span.addEventListener("click", likeComment);
+  span.addEventListener("click", likeComment, { once: true });
   span.dataset.id = comment.id;
   return span;
+}
+
+function createCommentLikeCounter__p(comment) {
+  const p = document.createElement("p");
+  p.classList.add("conversation-comments-comment__like-counter");
+  p.innerText = comment.likes;
+  return p;
 }
 
 function createCommentInnerContainer_div() {
@@ -262,6 +226,7 @@ function displayComment(comment) {
   const new_comment = createComment_article();
   const deleteButton = createCommentDeleteButton_span(comment);
   const likeButton = createCommentLikeButton_span(comment);
+  const likeCounter = createCommentLikeCounter__p(comment);
 
   const comment_inner_container = createCommentInnerContainer_div();
   const comment_author_picture = createCommentAuthorPicture_div();
@@ -279,6 +244,7 @@ function displayComment(comment) {
   new_comment.append(
     deleteButton,
     likeButton,
+    likeCounter,
     comment_inner_container,
     comment_message
   );
