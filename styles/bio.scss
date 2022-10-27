@@ -464,7 +464,7 @@
 
         &__delete-button{
             position: absolute;
-            bottom: 0;
+            top: 0;
             right: 0.0rem;
             font-size: 0.8rem !important;
             cursor: pointer;
@@ -480,6 +480,13 @@
             &--liked {
                 color: hsl(240, 100%, 50%);
             }
+        }
+
+        &__like-counter {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 0.8rem;
         }
 
         &__user-pic{
