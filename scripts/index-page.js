@@ -3,7 +3,6 @@ const GLOBAL_VARIABLES = {
   apiKey: "",
   BASE_URL: "https://project-1-api.herokuapp.com",
 };
-const desktop = 1280;
 
 GLOBAL_VARIABLES.apiKey = await getApiKey();
 let currentComments = await loadComments();

@@ -1,11 +1,23 @@
-@use './typography' as *;
+@use './fonts' as *;
+
+// BREAKPOINTS
 
 $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1280px;
-
 $width1292-breakpoint: 1293px;
 $width830-breakpoint: 830px;
 $width335-breakpoint: 335px;
+
+// COLORS
+
+$bandSite-black: #323232;
+$silver: hsl(0, 0%, 69%);
+$white: #FFFFFF;
+$bandSite-darkBlack: #000000;
+$mercury: #e0e0e0;
+$alabaster: #FAFAFA;
+$selectedShow: hsl(0, 0%, 78%);
+$inputError: #D22D2D;
 
 // MEDIA
 
@@ -41,107 +53,93 @@ $width335-breakpoint: 335px;
 
 // FONT FAMILY AND WEIGHT
 
-@mixin font400{
-    font-family: $Font400;
-    font-weight: 400;
+@mixin font($weight){
+    font-family: 'Avenir Next', sans-serif;
+    font-weight: $weight;
 }
 
-@mixin font600{
-    font-family: $Font600;
-    font-weight: 600;
-}
-
-@mixin font700{
-    font-family: $Font700;
-    font-weight: 700;
-}
-
-// FONT
+// FONT SIZE AND LINE HEIGHT
 
 @mixin pageHeader_mobile {
-    font-family: $Font600;
-    font-weight: 600;
+    @include font(600);
     line-height: 2rem;
     font-size: 1.5rem;
 }
 
-@mixin sectionHeader_mobile {
-    font-family: $Font600;
+@mixin sectionHeader_mobile { 
+    @include font(600);
     line-height: 2rem;
     font-size: 1.5rem;
 }
 
 @mixin subHeader_mobile {
-    font-family: $Font600;
-    font-weight: 600;
+    @include font(600);
     line-height: 1.375rem;
     font-size: 1.0rem;
 }
 
 @mixin bodyCopy_mobile {
-    font-family: $Font400;
+    @include font(400);
     line-height: 1.125rem;
     font-size: 0.8125rem;
 }
 
 @mixin footerCopy_mobile {
-    font-family: $Font400;
+    @include font(400);
     line-height: 1.125rem;
     font-size: 0.8125rem;
 }
 
 @mixin label_mobile {
-    font-family: $Font600;
-    font-weight: 600;
+    @include font(600);
     line-height: 1.25rem;
     font-size: 0.90em;
 }
 
 @mixin button_mobile {
-    font-family: $Font700;
-    font-weight: 700;
+    @include font(700);
     line-height: 1.25rem;
     font-size: 0.625rem;
 }
 
 @mixin pageHeader_tablet_desktop {
-    font-family: $Font600;
+    @include font(600);
     line-height: 4.25rem;
     font-size: 3rem;
 }
 
 @mixin sectionHeader_tablet_desktop {
-    font-family: $Font600;
+    @include font(600);
     line-height: 2.75rem;
     font-size: 2.25rem;
 }
 
 @mixin subHeader_tablet_desktop {
-    font-family: $Font600;
+    @include font(600);
     line-height: 2rem;
     font-size: 1.5rem;
 }
 
 @mixin bodyCopy_tablet_desktop {
-    font-family: $Font400;
+    @include font(400);
     line-height: 1.375rem;
     font-size: 0.875rem;
 }
 
 @mixin footerCopy_tablet_desktop {
-    font-family: $Font400;
+    @include font(400);
     line-height: 1.375rem;
     font-size: 0.875rem;
 }
 
 @mixin label_tablet_desktop {
-    font-family: $Font700;
+   @include font(700);
     line-height: 1.25rem;
     font-size: 0.75rem;
 }
 
 @mixin button_tablet_desktop {
-    font-family: $Font700;
+    @include font(700);
     line-height: 1.25rem;
     font-size: 0.75rem;
 }
