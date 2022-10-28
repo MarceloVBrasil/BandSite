@@ -89,7 +89,6 @@ async function getAllCommentsFromApi() {
       message: comment.comment,
       likes: comment.likes,
       date: comment.timestamp,
-      liked: comment.likes % 2 === 1,
     };
     COMMENTS.push(newComment);
   });
@@ -116,10 +115,11 @@ async function likeComment(e) {
     `${GLOBAL_VARIABLES.BASE_URL}/comments/${comment.id}/like?api_key=${GLOBAL_VARIABLES.apiKey}`
   );
 
-  likeButton.classList.toggle(
-    "conversation-comments-comment__like-button--liked"
-  );
-  comment.liked = !comment.liked;
+  if (comment.likes > 0)
+    likeButton.classList.add(
+      "conversation-comments-comment__like-button--liked"
+    );
+
   likeCounter.innerText = response.data.likes;
 }
 
@@ -174,7 +174,7 @@ function createCommentLikeButton_span(comment) {
     "conversation-comments-comment__like-button",
     "material-symbols-outlined"
   );
-  if (comment.liked)
+  if (comment.likes > 0)
     span.classList.add("conversation-comments-comment__like-button--liked");
   span.innerText = "thumb_up";
   span.addEventListener("click", likeComment, { once: true });
